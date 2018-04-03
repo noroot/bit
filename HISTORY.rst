@@ -4,6 +4,12 @@ Release History
 Unreleased (see `master <https://github.com/ofek/bit>`_)
 --------------------------------------------------------
 
+0.4.5 (2018-04-03)
+------------------
+
+- Add tx info endpoint support for bitpay
+
+  
 0.4.3 (2018-03-11)
 ------------------
 

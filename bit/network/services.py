@@ -65,6 +65,24 @@ class BitpayAPI(InsightAPI):
     TEST_UNSPENT_API = TEST_ADDRESS_API + '{}/utxo'
     TEST_TX_PUSH_API = TEST_ENDPOINT + 'tx/send'
     TX_PUSH_PARAM = 'rawtx'
+    MAIN_TX_API = MAIN_ENDPOINT + 'tx/{}'
+    TEST_TX_API = TEST_ENDPOINT + 'tx/{}'
+
+    @classmethod
+    def get_tx_testnet(cls, tx):
+        r = requests.get(cls.TEST_TX_API.format(tx), timeout=DEFAULT_TIMEOUT)
+        if r.status_code != 200:  # pragma: no cover
+            raise ConnectionError
+        return r.json()
+
+    @classmethod
+    def get_tx_main(cls, tx):
+        r = requests.get(cls.MAIN_TX_API.format(tx), timeout=DEFAULT_TIMEOUT)
+        if r.status_code != 200:  # pragma: no cover
+            raise ConnectionError
+        return r.json()
+
+
 
     @classmethod
     def get_balance_testnet(cls, address):
