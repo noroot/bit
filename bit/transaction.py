@@ -163,7 +163,7 @@ def construct_output_block(outputs):
         else:
             script = (OP_RETURN +
                       len(dest).to_bytes(1, byteorder='little') +
-                      dest)
+                      bytes(dest, encoding='utf-8'))
 
             output_block += b'\x00\x00\x00\x00\x00\x00\x00\x00'
 
